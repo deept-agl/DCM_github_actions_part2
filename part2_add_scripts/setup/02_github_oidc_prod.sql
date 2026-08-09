@@ -7,7 +7,7 @@ CREATE USER IF NOT EXISTS SVC_EMP_DCM_PROD
   WORKLOAD_IDENTITY = (
     TYPE = OIDC
     ISSUER = 'https://token.actions.githubusercontent.com'
-    SUBJECT = 'repo:deept-agl/DCM_DBT_Snowflake_Project:environment:DCM_PROD' -- replace with your github_user_name/repo
+    SUBJECT = 'repo:deept-agl/DCM_github_actions_part2:environment:DCM_PROD' -- replace with your github_user_name/repo
   );
 
 GRANT ROLE EMP_DCM_PROD_DEPLOYER TO USER SVC_EMP_DCM_PROD;
