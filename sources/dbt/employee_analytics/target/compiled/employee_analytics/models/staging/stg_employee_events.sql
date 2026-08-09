@@ -1,0 +1,1 @@
+select event_id,employee_id,upper(trim(event_type)) event_type,event_date,old_value,new_value from EMPLOYEE_ANALYTICS_STAGE.RAW.EMPLOYEE_EVENTS

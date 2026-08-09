@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_employees
+    description: Clean employee dimension enriched with department data.
+    columns:
+      - name: employee_id
+        tests:
+          - not_null
+          - unique
+
+      - name: salary
+        tests:
+          - not_null
+
+  - name: agg_department_summary
+    description: Department-level workforce summary.
+
+  - name: agg_employee_movement
+    description: Monthly employee lifecycle movements.

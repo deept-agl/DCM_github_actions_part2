@@ -1,0 +1,27 @@
+name: 01 - Test PROD DCM Connection
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  SNOWFLAKE_USER: SVC_EMP_DCM_PROD
+
+jobs:
+  test-prod:
+    runs-on: ubuntu-latest
+    environment: DCM_PROD
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test Snowflake DCM connection
+        uses: snowflakedb/snowflake-actions/dcm/connection-test@v3
+        with:
+          target: DCM_PROD
+          project-path: .
+          snowflake-user: ${{ env.SNOWFLAKE_USER }}

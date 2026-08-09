@@ -1,0 +1,40 @@
+manifest_version: 2
+type: DCM_PROJECT
+default_target: DEV
+targets:
+  DEV:
+    account_identifier: FDHMTYP-ZSB24048
+    project_name: DCM_CONTROL.PROJECTS.EMPLOYEE_ANALYTICS_DEV
+    project_owner: EMP_DCM_DEV_DEPLOYER
+    templating_config: DEV
+  DCM_STAGE:
+    account_identifier: FDHMTYP-ZSB24048
+    project_name: DCM_CONTROL.PROJECTS.EMPLOYEE_ANALYTICS_STAGE
+    project_owner: EMP_DCM_STAGE_DEPLOYER
+    templating_config: STAGE
+  DCM_PROD:
+    account_identifier: FDHMTYP-ZSB24048
+    project_name: DCM_CONTROL.PROJECTS.EMPLOYEE_ANALYTICS_PROD
+    project_owner: EMP_DCM_PROD_DEPLOYER
+    templating_config: PROD
+templating:
+  defaults:
+    database_base: EMPLOYEE_ANALYTICS
+    load_wh_size: X-SMALL
+    transform_wh_size: X-SMALL
+    auto_suspend_seconds: 60
+    retention_days: 1
+    enable_data_quality: false
+  configurations:
+    DEV:
+      env_suffix: _DEV
+      environment: DEV
+    STAGE:
+      env_suffix: _STAGE
+      environment: STAGE
+      retention_days: 3
+    PROD:
+      env_suffix: _PROD
+      environment: PROD
+      transform_wh_size: SMALL
+      retention_days: 7

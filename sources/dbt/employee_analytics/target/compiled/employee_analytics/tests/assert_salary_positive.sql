@@ -1,0 +1,1 @@
+select * from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees where salary <= 0

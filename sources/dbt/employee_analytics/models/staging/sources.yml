@@ -1,0 +1,9 @@
+version: 2
+sources:
+  - name: employee_raw
+    database: "{{ target.database }}"
+    schema: RAW
+    tables:
+      - name: EMPLOYEES
+      - name: DEPARTMENTS
+      - name: EMPLOYEE_EVENTS

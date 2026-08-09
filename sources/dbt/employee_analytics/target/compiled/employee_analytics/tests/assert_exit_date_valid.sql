@@ -1,0 +1,1 @@
+select * from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees where exit_date is not null and exit_date < join_date

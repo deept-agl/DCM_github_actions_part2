@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_employees
+    columns:
+      - name: employee_id
+        tests:
+          - not_null
+          - unique
+
+      - name: department_id
+        tests:
+          - not_null
+
+      - name: employment_status
+        tests:
+          - accepted_values:
+              values:
+                - ACTIVE
+                - EXITED
+
+  - name: stg_departments
+    columns:
+      - name: department_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_employee_events
+    columns:
+      - name: event_id
+        tests:
+          - not_null
+          - unique
+
+      - name: employee_id
+        tests:
+          - relationships:
+              to: ref('stg_employees')
+              field: employee_id

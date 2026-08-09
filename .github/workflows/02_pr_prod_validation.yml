@@ -1,0 +1,90 @@
+name: 02 - Validate Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+env:
+  SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+
+jobs:
+
+  dcm-prod-plan:
+    runs-on: ubuntu-latest
+    environment: DCM_PROD
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test PROD DCM connection
+        uses: snowflakedb/snowflake-actions/dcm/dcm-connection-test@v3
+        with:
+          target: DCM_PROD
+          project-path: .
+          snowflake-user: SVC_EMP_DCM_PROD
+
+      - name: PROD DCM PLAN
+        uses: snowflakedb/snowflake-actions/dcm/dcm-plan@v3
+        with:
+          target: DCM_PROD
+          project-path: .
+          snowflake-user: SVC_EMP_DCM_PROD
+          plan-delta: "false"
+          comment-on-pr: "true"
+
+
+  dbt-stage-validation:
+    runs-on: ubuntu-latest
+
+    # If your current OIDC service identity is restricted to DCM_PROD only,
+    # use an equivalent STAGE OIDC service user/environment here.
+    environment: DCM_PROD
+
+    env:
+      SNOWFLAKE_CLI_FEATURES_ENABLE_DBT: true
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Snowflake CLI with OIDC
+        uses: snowflakedb/snowflake-actions@v3
+        with:
+          use-oidc: true
+
+      - name: Check Snowflake connection
+        run: snow connection test -x
+
+      - name: Deploy temporary dbt tester project
+        run: |
+          snow dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
+            --source sources/dbt/employee_analytics \
+            --default-target stage \
+            --database EMPLOYEE_ANALYTICS_STAGE \
+            --schema DBT_PROJECTS \
+            --role EMPLOYEE_DBT \
+            --warehouse EMPLOYEE_TRANSFORM_WH_STAGE \
+            -x
+
+      - name: Run dbt build on STAGE
+        run: |
+          snow dbt execute EMPLOYEE_ANALYTICS_DBT_CI \
+            build \
+            --database EMPLOYEE_ANALYTICS_STAGE \
+            --schema DBT_PROJECTS \
+            --role EMPLOYEE_DBT \
+            --warehouse EMPLOYEE_TRANSFORM_WH_STAGE \
+            -x

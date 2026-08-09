@@ -1,0 +1,70 @@
+name: 03 - Deploy Employee Analytics PROD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "manifest.yml"
+      - "sources/**"
+      - "scripts/03_validate_prod.sql"
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  SNOWFLAKE_USER: SVC_EMP_DCM_PROD
+  SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: DCM_PROD
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test PROD DCM connection
+        uses: snowflakedb/snowflake-actions/dcm/connection-test@v3
+        with:
+          target: DCM_PROD
+          project-path: .
+          snowflake-user: ${{ env.SNOWFLAKE_USER }}
+
+      - name: Run full PROD DCM PLAN
+        uses: snowflakedb/snowflake-actions/dcm/plan@v3
+        with:
+          target: DCM_PROD
+          project-path: .
+          snowflake-user: ${{ env.SNOWFLAKE_USER }}
+          plan-delta: "false"
+
+      - name: Deploy DCM to PROD
+        uses: snowflakedb/snowflake-actions/dcm/deploy@v3
+        with:
+          target: DCM_PROD
+          project-path: .
+          snowflake-user: ${{ env.SNOWFLAKE_USER }}
+          allow-drops: "false"
+          post-scripts-path: post_deploy/cicd
+
+      - name: Set up Snowflake CLI with OIDC
+        uses: snowflakedb/snowflake-actions@v3
+        with:
+          use-oidc: true
+
+      - name: Deploy dbt project object to PROD
+        shell: bash
+        run: |
+          snow dbt deploy EMPLOYEE_ANALYTICS_DBT             --source sources/dbt/employee_analytics             --default-target prod             --database EMPLOYEE_ANALYTICS_PROD             --schema DBT_PROJECTS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+
+      - name: Build dbt models in PROD
+        shell: bash
+        run: |
+          snow sql             -q "EXECUTE DBT PROJECT EMPLOYEE_ANALYTICS_PROD.DBT_PROJECTS.EMPLOYEE_ANALYTICS_DBT ARGS = 'build --target prod';"             --database EMPLOYEE_ANALYTICS_PROD             --schema DBT_PROJECTS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+
+      - name: Validate PROD
+        shell: bash
+        run: |
+          snow sql             -f scripts/03_validate_prod.sql             --database EMPLOYEE_ANALYTICS_PROD             --schema ANALYTICS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x

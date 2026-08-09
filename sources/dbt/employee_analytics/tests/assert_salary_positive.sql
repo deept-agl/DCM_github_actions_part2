@@ -1,0 +1,1 @@
+select * from {{ ref('dim_employees') }} where salary <= 0

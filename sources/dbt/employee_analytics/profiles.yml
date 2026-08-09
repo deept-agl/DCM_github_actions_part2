@@ -1,0 +1,6 @@
+employee_analytics:
+  target: dev
+  outputs:
+    dev: {type: snowflake, account: FDHMTYP-ZSB24048, user: DEEPTIA, authenticator: externalbrowser, role: EMPLOYEE_DBT, database: EMPLOYEE_ANALYTICS_DEV, warehouse: EMPLOYEE_TRANSFORM_WH_DEV, schema: ANALYTICS, threads: 4}
+    stage: {type: snowflake, account: FDHMTYP-ZSB24048, user: DEEPTIA, authenticator: externalbrowser, role: EMPLOYEE_DBT, database: EMPLOYEE_ANALYTICS_STAGE, warehouse: EMPLOYEE_TRANSFORM_WH_STAGE, schema: ANALYTICS, threads: 4}
+    prod: {type: snowflake, account: FDHMTYP-ZSB24048, user: DEEPTIA, authenticator: externalbrowser, role: EMPLOYEE_DBT, database: EMPLOYEE_ANALYTICS_PROD, warehouse: EMPLOYEE_TRANSFORM_WH_PROD, schema: ANALYTICS, threads: 4}

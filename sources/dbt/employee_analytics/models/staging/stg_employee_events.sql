@@ -1,0 +1,1 @@
+select event_id,employee_id,upper(trim(event_type)) event_type,event_date,old_value,new_value from {{ source('employee_raw','EMPLOYEE_EVENTS') }}

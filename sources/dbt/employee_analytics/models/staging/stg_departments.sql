@@ -1,0 +1,1 @@
+select department_id,trim(department_name) department_name,trim(department_head) department_head,trim(cost_center) cost_center from {{ source('employee_raw','DEPARTMENTS') }}

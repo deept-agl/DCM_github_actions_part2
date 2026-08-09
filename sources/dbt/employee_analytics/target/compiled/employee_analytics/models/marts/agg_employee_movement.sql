@@ -1,0 +1,1 @@
+select date_trunc('month',event_date)::date month,count_if(event_type='JOINED') joiners,count_if(event_type='EXITED') exits,count_if(event_type='TRANSFERRED') transfers,count_if(event_type='PROMOTED') promotions,count_if(event_type='SALARY_CHANGE') salary_changes from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employee_events group by 1
