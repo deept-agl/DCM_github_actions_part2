@@ -77,7 +77,7 @@ jobs:
 
       - name: Deploy dbt CI project to STAGE
         run: |
-          snow dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
+          snow --debug dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
             --source ./sources/dbt/employee_analytics \
             --default-target stage \
             --database EMPLOYEE_ANALYTICS_STAGE \
