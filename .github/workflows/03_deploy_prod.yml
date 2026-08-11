@@ -44,13 +44,13 @@ jobs:
         run: |
           snow dcm plan \
             --target DCM_PROD \
-            --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
             -x
 
       - name: Deploy DCM to PROD
         run: |
           snow dcm deploy \
             --target DCM_PROD \
+            --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
             -x
 
       - name: Load PROD sample data
