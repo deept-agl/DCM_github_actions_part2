@@ -18,10 +18,12 @@ env:
   SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
 
 jobs:
+
   deploy-prod:
+
     runs-on: ubuntu-latest
     environment: DCM_PROD
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
