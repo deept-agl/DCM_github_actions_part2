@@ -68,10 +68,18 @@ jobs:
             --user "$SNOWFLAKE_USER" \
             -x
 
+      - name: Check dbt project files
+        run: |
+          pwd
+          find sources/dbt/employee_analytics -maxdepth 2 -type f | sort
+          test -f sources/dbt/employee_analytics/dbt_project.yml
+          test -f sources/dbt/employee_analytics/profiles.yml
+
       - name: Deploy dbt CI project to STAGE
         run: |
           snow dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
-            --source sources/dbt/employee_analytics \
+            --source ./sources/dbt/employee_analytics \
+            --profiles-dir ./sources/dbt/employee_analytics \
             --default-target stage \
             --database EMPLOYEE_ANALYTICS_STAGE \
             --schema DBT_PROJECTS \
