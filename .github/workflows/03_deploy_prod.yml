@@ -27,40 +27,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Test PROD DCM connection
-        uses: snowflakedb/snowflake-actions/dcm/connection-test@v3
-        with:
-          target: DCM_PROD
-          project-path: .
-          snowflake-user: ${{ env.SNOWFLAKE_USER }}
-
-      - name: Run full PROD DCM PLAN
-        uses: snowflakedb/snowflake-actions/dcm/plan@v3
-        with:
-          target: DCM_PROD
-          project-path: .
-          snowflake-user: ${{ env.SNOWFLAKE_USER }}
-          plan-delta: "false"
-
-      - name: Deploy DCM to PROD
-        uses: snowflakedb/snowflake-actions/dcm/deploy@v3
-        with:
-          target: DCM_PROD
-          project-path: .
-          snowflake-user: ${{ env.SNOWFLAKE_USER }}
-          allow-drops: "false"
-
       - name: Set up Snowflake CLI with OIDC
         uses: snowflakedb/snowflake-actions@v3
         with:
           use-oidc: true
 
-      - name: Test Snowflake CLI connection
+      - name: Test Snowflake connection
         run: |
-          snow connection test -x
+          snow connection test \
+            --account "$SNOWFLAKE_ACCOUNT" \
+            --user "$SNOWFLAKE_USER" \
+            -x
+
+      - name: Run full PROD DCM PLAN
+        run: |
+          snow dcm plan \
+            --target DCM_PROD \
+            -x
+
+      - name: Deploy DCM to PROD
+        run: |
+          snow dcm deploy \
+            --target DCM_PROD \
+            -x
 
       - name: Load PROD sample data
-        shell: bash
         run: |
           snow sql \
             -f scripts/03_load_prod_sample_data.sql \
@@ -70,43 +61,54 @@ jobs:
             --warehouse EMPLOYEE_LOAD_WH_PROD \
             --account "$SNOWFLAKE_ACCOUNT" \
             --user "$SNOWFLAKE_USER" \
-            --authenticator WORKLOAD_IDENTITY \
-            --workload-identity-provider OIDC \
             -x
 
+      - name: Prepare clean dbt project
+        run: |
+          mkdir -p ci_dbt_project
+
+          cp sources/dbt/employee_analytics/dbt_project.yml ci_dbt_project/
+          cp sources/dbt/employee_analytics/profiles.yml ci_dbt_project/
+
+          cp -R sources/dbt/employee_analytics/models ci_dbt_project/
+
+          if [ -d "sources/dbt/employee_analytics/macros" ]; then
+            cp -R sources/dbt/employee_analytics/macros ci_dbt_project/
+          fi
+
+          if [ -d "sources/dbt/employee_analytics/tests" ]; then
+            cp -R sources/dbt/employee_analytics/tests ci_dbt_project/
+          fi
+
       - name: Deploy dbt project object to PROD
-        shell: bash
         run: |
           snow dbt deploy EMPLOYEE_ANALYTICS_DBT \
-            --source sources/dbt/employee_analytics \
+            --source ./ci_dbt_project \
             --default-target prod \
+            --dbt-version 1.11.11 \
             --database EMPLOYEE_ANALYTICS_PROD \
             --schema DBT_PROJECTS \
             --role EMPLOYEE_DBT \
             --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
             --account "$SNOWFLAKE_ACCOUNT" \
             --user "$SNOWFLAKE_USER" \
-            --authenticator WORKLOAD_IDENTITY \
-            --workload-identity-provider OIDC \
             -x
 
       - name: Build dbt models in PROD
-        shell: bash
         run: |
-          snow sql \
-            -q "EXECUTE DBT PROJECT EMPLOYEE_ANALYTICS_PROD.DBT_PROJECTS.EMPLOYEE_ANALYTICS_DBT ARGS = 'build --target prod';" \
+          snow dbt execute \
+            -x \
+            --account "$SNOWFLAKE_ACCOUNT" \
+            --user "$SNOWFLAKE_USER" \
             --database EMPLOYEE_ANALYTICS_PROD \
             --schema DBT_PROJECTS \
             --role EMPLOYEE_DBT \
             --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
-            --account "$SNOWFLAKE_ACCOUNT" \
-            --user "$SNOWFLAKE_USER" \
-            --authenticator WORKLOAD_IDENTITY \
-            --workload-identity-provider OIDC \
-            -x
+            EMPLOYEE_ANALYTICS_PROD.DBT_PROJECTS.EMPLOYEE_ANALYTICS_DBT \
+            build \
+            --target prod
 
       - name: Validate PROD
-        shell: bash
         run: |
           snow sql \
             -f scripts/04_validate_prod.sql \
@@ -116,6 +118,4 @@ jobs:
             --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
             --account "$SNOWFLAKE_ACCOUNT" \
             --user "$SNOWFLAKE_USER" \
-            --authenticator WORKLOAD_IDENTITY \
-            --workload-identity-provider OIDC \
             -x
