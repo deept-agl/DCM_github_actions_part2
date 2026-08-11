@@ -6,7 +6,8 @@ on:
     paths:
       - "manifest.yml"
       - "sources/**"
-      - "scripts/03_validate_prod.sql"
+      - "scripts/03_load_prod_sample_data.sql"
+      - "scripts/04_validate_prod.sql"
 
 permissions:
   id-token: write
@@ -54,6 +55,16 @@ jobs:
         with:
           use-oidc: true
 
+      - name: Test Snowflake CLI connection
+        run: |
+
+          snow connection test -x
+          
+       - name: Load PROD sample data
+        shell: bash
+        run: |
+          snow sql             -f scripts/03_load_prod_sample_data.sql             --database EMPLOYEE_ANALYTICS_PROD             --schema ANALYTICS             --role EMPLOYEE_ENGINEER              --warehouse EMPLOYEE_LOAD_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+
       - name: Deploy dbt project object to PROD
         shell: bash
         run: |
@@ -67,4 +78,4 @@ jobs:
       - name: Validate PROD
         shell: bash
         run: |
-          snow sql             -f scripts/03_validate_prod.sql             --database EMPLOYEE_ANALYTICS_PROD             --schema ANALYTICS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+          snow sql             -f scripts/04_validate_prod.sql             --database EMPLOYEE_ANALYTICS_PROD             --schema ANALYTICS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x

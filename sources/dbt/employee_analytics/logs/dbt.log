@@ -4150,3 +4150,1305 @@ create or replace transient table EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.agg_departm
 [0m10:18:51.801318 [debug] [Dummy-1   ]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 11.756021, "process_in_blocks": "0", "process_kernel_time": 0.97, "process_mem_max_rss": "526472", "process_out_blocks": "0", "process_user_time": 6.54}
 [0m10:18:51.801974 [debug] [Dummy-1   ]: Command `cli build` succeeded at 10:18:51.801716 after 11.76 seconds
 [0m10:18:51.802564 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 10:16:02.810054 | f3ef35ee-e580-4ae7-9c0a-5be4928f89c6 ==============================
+[0m10:16:02.810054 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m10:16:02.811031 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/tmp/dbt/logs', 'profiles_dir': '/tmp/dbt/', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt ', 'introspect': 'True', 'target_path': '/tmp/dbt/target', 'log_format': 'default', 'send_anonymous_usage_stats': 'False'}
+[0m10:16:03.104624 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m10:16:03.635214 [debug] [Dummy-1   ]: checksum: 53ed91fada2233efb98368d1716b44ab532c83a9c293cf1890b7905d5b45fb25, vars: {}, profile: , target: dev, version: 1.9.4
+[0m10:16:03.785949 [info ] [Dummy-1   ]: Unable to do partial parsing because config vars, config profile, or config target have changed
+[0m10:16:03.787005 [debug] [Dummy-1   ]: previous checksum: 53ed91fada2233efb98368d1716b44ab532c83a9c293cf1890b7905d5b45fb25, current checksum: ab753f9482add4a846bb27025959f965636943c672cd904bd74aeb8fdb8e7fb1
+[0m10:16:03.792002 [info ] [Dummy-1   ]: Unable to do partial parsing because profile has changed
+[0m10:16:05.674136 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m10:16:05.676532 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m10:16:05.744704 [info ] [Dummy-1   ]: Found 6 models, 14 data tests, 3 sources, 475 macros
+[0m10:16:05.748354 [info ] [Dummy-1   ]: 
+[0m10:16:05.748931 [info ] [Dummy-1   ]: Concurrency: 4 threads (target='dev')
+[0m10:16:05.749390 [info ] [Dummy-1   ]: 
+[0m10:16:05.750115 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m10:16:05.757867 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_EMPLOYEE_ANALYTICS_DEV'
+[0m10:16:05.759861 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_EMPLOYEE_ANALYTICS_DEV'
+[0m10:16:05.851492 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV"
+[0m10:16:05.852354 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV"
+[0m10:16:05.852897 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV"} */
+show terse schemas in database EMPLOYEE_ANALYTICS_DEV
+    limit 10000
+[0m10:16:05.853396 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV"} */
+show terse schemas in database EMPLOYEE_ANALYTICS_DEV
+    limit 10000
+[0m10:16:05.853879 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:16:05.854302 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:16:06.571762 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.717 seconds
+[0m10:16:06.616781 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.763 seconds
+[0m10:16:06.621999 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS'
+[0m10:16:06.624048 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_DEV, now list_EMPLOYEE_ANALYTICS_DEV_STAGING)
+[0m10:16:06.638512 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS"
+[0m10:16:06.642577 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV_STAGING"
+[0m10:16:06.643207 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m10:16:06.643843 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV_STAGING: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV_STAGING"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m10:16:06.644347 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:16:06.644799 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:16:07.399208 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.754 seconds
+[0m10:16:07.400111 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.756 seconds
+[0m10:16:07.404785 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV_STAGING"
+[0m10:16:07.406743 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS"
+[0m10:16:07.407325 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV_STAGING: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV_STAGING"} */
+show objects in EMPLOYEE_ANALYTICS_DEV.STAGING
+    limit 10000
+    
+;
+[0m10:16:07.407935 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS"} */
+show objects in EMPLOYEE_ANALYTICS_DEV.ANALYTICS
+    limit 10000
+    
+;
+[0m10:16:07.565395 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.157 seconds
+[0m10:16:07.567586 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV_STAGING"
+[0m10:16:07.568227 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV_STAGING: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV_STAGING"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m10:16:07.569077 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.160 seconds
+[0m10:16:07.571384 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS"
+[0m10:16:07.572016 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "connection_name": "list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m10:16:07.678618 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.109 seconds
+[0m10:16:07.691887 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.119 seconds
+[0m10:16:07.704792 [debug] [Thread-2 (]: Began running node model.employee_analytics.stg_departments
+[0m10:16:07.705510 [debug] [Thread-3 (]: Began running node model.employee_analytics.stg_employee_events
+[0m10:16:07.706268 [debug] [Thread-4 (]: Began running node model.employee_analytics.stg_employees
+[0m10:16:07.707092 [info ] [Thread-2 (]: 1 of 20 START sql view model STAGING.stg_departments ........................... [RUN]
+[0m10:16:07.707933 [info ] [Thread-3 (]: 2 of 20 START sql view model STAGING.stg_employee_events ....................... [RUN]
+[0m10:16:07.708666 [info ] [Thread-4 (]: 3 of 20 START sql view model STAGING.stg_employees ............................. [RUN]
+[0m10:16:07.709415 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_DEV_ANALYTICS, now model.employee_analytics.stg_departments)
+[0m10:16:07.710018 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_DEV_STAGING, now model.employee_analytics.stg_employee_events)
+[0m10:16:07.710632 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_DEV, now model.employee_analytics.stg_employees)
+[0m10:16:07.711163 [debug] [Thread-2 (]: Began compiling node model.employee_analytics.stg_departments
+[0m10:16:07.711749 [debug] [Thread-3 (]: Began compiling node model.employee_analytics.stg_employee_events
+[0m10:16:07.712255 [debug] [Thread-4 (]: Began compiling node model.employee_analytics.stg_employees
+[0m10:16:07.721822 [debug] [Thread-2 (]: Writing injected SQL for node "model.employee_analytics.stg_departments"
+[0m10:16:07.729079 [debug] [Thread-3 (]: Writing injected SQL for node "model.employee_analytics.stg_employee_events"
+[0m10:16:07.733915 [debug] [Thread-4 (]: Writing injected SQL for node "model.employee_analytics.stg_employees"
+[0m10:16:07.735331 [debug] [Thread-2 (]: Began executing node model.employee_analytics.stg_departments
+[0m10:16:07.736177 [debug] [Thread-3 (]: Began executing node model.employee_analytics.stg_employee_events
+[0m10:16:07.754539 [debug] [Thread-4 (]: Began executing node model.employee_analytics.stg_employees
+[0m10:16:07.785441 [debug] [Thread-2 (]: Writing runtime sql for node "model.employee_analytics.stg_departments"
+[0m10:16:07.800492 [debug] [Thread-3 (]: Writing runtime sql for node "model.employee_analytics.stg_employee_events"
+[0m10:16:07.806739 [debug] [Thread-4 (]: Writing runtime sql for node "model.employee_analytics.stg_employees"
+[0m10:16:07.808700 [debug] [Thread-2 (]: Using snowflake connection "model.employee_analytics.stg_departments"
+[0m10:16:07.809815 [debug] [Thread-3 (]: Using snowflake connection "model.employee_analytics.stg_employee_events"
+[0m10:16:07.810474 [debug] [Thread-2 (]: On model.employee_analytics.stg_departments: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "model.employee_analytics.stg_departments"} */
+create or replace   view EMPLOYEE_ANALYTICS_DEV.STAGING.stg_departments
+  
+   as (
+    select department_id,trim(department_name) department_name,trim(department_head) department_head,trim(cost_center) cost_center from EMPLOYEE_ANALYTICS_DEV.RAW.DEPARTMENTS
+  );
+[0m10:16:07.811621 [debug] [Thread-4 (]: Using snowflake connection "model.employee_analytics.stg_employees"
+[0m10:16:07.812260 [debug] [Thread-3 (]: On model.employee_analytics.stg_employee_events: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "model.employee_analytics.stg_employee_events"} */
+create or replace   view EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employee_events
+  
+   as (
+    select event_id,employee_id,upper(trim(event_type)) event_type,event_date,old_value,new_value from EMPLOYEE_ANALYTICS_DEV.RAW.EMPLOYEE_EVENTS
+  );
+[0m10:16:07.812824 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:16:07.813365 [debug] [Thread-4 (]: On model.employee_analytics.stg_employees: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "model.employee_analytics.stg_employees"} */
+create or replace   view EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employees
+  
+   as (
+    select employee_id,trim(employee_name) employee_name,lower(trim(email)) email,department_id,trim(job_title) job_title,join_date,exit_date,upper(trim(employment_status)) employment_status,salary,updated_at from EMPLOYEE_ANALYTICS_DEV.RAW.EMPLOYEES
+  );
+[0m10:16:07.813895 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:16:07.814611 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:16:09.171422 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.357 seconds
+[0m10:16:09.172358 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.358 seconds
+[0m10:16:09.179012 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.366 seconds
+[0m10:16:09.205278 [info ] [Thread-3 (]: 2 of 20 OK created sql view model STAGING.stg_employee_events .................. [[32mSUCCESS 1[0m in 1.49s]
+[0m10:16:09.206153 [info ] [Thread-4 (]: 3 of 20 OK created sql view model STAGING.stg_employees ........................ [[32mSUCCESS 1[0m in 1.49s]
+[0m10:16:09.206972 [info ] [Thread-2 (]: 1 of 20 OK created sql view model STAGING.stg_departments ...................... [[32mSUCCESS 1[0m in 1.50s]
+[0m10:16:09.207839 [debug] [Thread-3 (]: Finished running node model.employee_analytics.stg_employee_events
+[0m10:16:09.208522 [debug] [Thread-4 (]: Finished running node model.employee_analytics.stg_employees
+[0m10:16:09.209218 [debug] [Thread-2 (]: Finished running node model.employee_analytics.stg_departments
+[0m10:16:09.210517 [debug] [Thread-5 (]: Began running node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:16:09.211121 [debug] [Thread-4 (]: Began running node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:16:09.212112 [debug] [Thread-3 (]: Began running node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:16:09.212725 [debug] [Thread-2 (]: Began running node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:16:09.213595 [info ] [Thread-5 (]: 4 of 20 START test not_null_stg_employee_events_event_id ....................... [RUN]
+[0m10:16:09.214208 [info ] [Thread-4 (]: 5 of 20 START test unique_stg_employee_events_event_id ......................... [RUN]
+[0m10:16:09.214783 [info ] [Thread-3 (]: 6 of 20 START test accepted_values_stg_employees_employment_status__ACTIVE__EXITED  [RUN]
+[0m10:16:09.215445 [info ] [Thread-2 (]: 7 of 20 START test not_null_stg_employees_department_id ........................ [RUN]
+[0m10:16:09.216321 [debug] [Thread-5 (]: Acquiring new snowflake connection 'test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52'
+[0m10:16:09.216967 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.employee_analytics.stg_employees, now test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c)
+[0m10:16:09.217657 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.employee_analytics.stg_employee_events, now test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8)
+[0m10:16:09.218286 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.employee_analytics.stg_departments, now test.employee_analytics.not_null_stg_employees_department_id.a7701eed35)
+[0m10:16:09.218873 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:16:09.219385 [debug] [Thread-4 (]: Began compiling node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:16:09.220007 [debug] [Thread-3 (]: Began compiling node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:16:09.220521 [debug] [Thread-2 (]: Began compiling node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:16:09.232497 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"
+[0m10:16:09.241122 [debug] [Thread-4 (]: Writing injected SQL for node "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"
+[0m10:16:09.247433 [debug] [Thread-3 (]: Writing injected SQL for node "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"
+[0m10:16:09.255615 [debug] [Thread-2 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"
+[0m10:16:09.256978 [debug] [Thread-5 (]: Began executing node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:16:09.257951 [debug] [Thread-4 (]: Began executing node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:16:09.258844 [debug] [Thread-3 (]: Began executing node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:16:09.270532 [debug] [Thread-2 (]: Began executing node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:16:09.279506 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"
+[0m10:16:09.283715 [debug] [Thread-4 (]: Writing runtime sql for node "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"
+[0m10:16:09.288011 [debug] [Thread-3 (]: Writing runtime sql for node "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"
+[0m10:16:09.292059 [debug] [Thread-2 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"
+[0m10:16:09.293821 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"
+[0m10:16:09.295271 [debug] [Thread-4 (]: Using snowflake connection "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"
+[0m10:16:09.298326 [debug] [Thread-3 (]: Using snowflake connection "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"
+[0m10:16:09.299054 [debug] [Thread-5 (]: On test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select event_id
+from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employee_events
+where event_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:09.300159 [debug] [Thread-2 (]: Using snowflake connection "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"
+[0m10:16:09.300713 [debug] [Thread-4 (]: On test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    event_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employee_events
+where event_id is not null
+group by event_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:09.301349 [debug] [Thread-3 (]: On test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        employment_status as value_field,
+        count(*) as n_records
+
+    from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employees
+    group by employment_status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'ACTIVE','EXITED'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:09.301942 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:16:09.302476 [debug] [Thread-2 (]: On test.employee_analytics.not_null_stg_employees_department_id.a7701eed35: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select department_id
+from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employees
+where department_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:09.302987 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:16:09.303455 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:16:09.304238 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:16:10.154568 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.852 seconds
+[0m10:16:10.159128 [info ] [Thread-5 (]: 4 of 20 PASS not_null_stg_employee_events_event_id ............................. [[32mPASS[0m in 0.94s]
+[0m10:16:10.160082 [debug] [Thread-5 (]: Finished running node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:16:10.160738 [debug] [Thread-5 (]: Began running node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:16:10.161405 [info ] [Thread-5 (]: 8 of 20 START test not_null_stg_employees_employee_id .......................... [RUN]
+[0m10:16:10.162110 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52, now test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b)
+[0m10:16:10.162693 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:16:10.169156 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"
+[0m10:16:10.169973 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.866 seconds
+[0m10:16:10.172555 [info ] [Thread-2 (]: 7 of 20 PASS not_null_stg_employees_department_id .............................. [[32mPASS[0m in 0.95s]
+[0m10:16:10.173422 [debug] [Thread-2 (]: Finished running node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:16:10.173889 [debug] [Thread-5 (]: Began executing node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:16:10.174476 [debug] [Thread-2 (]: Began running node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:16:10.179032 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"
+[0m10:16:10.179833 [info ] [Thread-2 (]: 9 of 20 START test relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_  [RUN]
+[0m10:16:10.181007 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_employees_department_id.a7701eed35, now test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6)
+[0m10:16:10.181973 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"
+[0m10:16:10.182508 [debug] [Thread-2 (]: Began compiling node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:16:10.183093 [debug] [Thread-5 (]: On test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select employee_id
+from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employees
+where employee_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:10.190641 [debug] [Thread-2 (]: Writing injected SQL for node "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"
+[0m10:16:10.191336 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:16:10.192423 [debug] [Thread-2 (]: Began executing node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:16:10.196657 [debug] [Thread-2 (]: Writing runtime sql for node "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"
+[0m10:16:10.198264 [debug] [Thread-2 (]: Using snowflake connection "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"
+[0m10:16:10.198893 [debug] [Thread-2 (]: On test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select employee_id as from_field
+    from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employee_events
+    where employee_id is not null
+),
+
+parent as (
+    select employee_id as to_field
+    from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employees
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:10.199454 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:16:10.215428 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.910 seconds
+[0m10:16:10.217999 [info ] [Thread-3 (]: 6 of 20 PASS accepted_values_stg_employees_employment_status__ACTIVE__EXITED ... [[32mPASS[0m in 1.00s]
+[0m10:16:10.218839 [debug] [Thread-3 (]: Finished running node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:16:10.219463 [debug] [Thread-3 (]: Began running node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:16:10.220240 [info ] [Thread-3 (]: 10 of 20 START test unique_stg_employees_employee_id ........................... [RUN]
+[0m10:16:10.220916 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8, now test.employee_analytics.unique_stg_employees_employee_id.db72478d64)
+[0m10:16:10.221410 [debug] [Thread-3 (]: Began compiling node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:16:10.227222 [debug] [Thread-3 (]: Writing injected SQL for node "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"
+[0m10:16:10.228126 [debug] [Thread-3 (]: Began executing node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:16:10.232227 [debug] [Thread-3 (]: Writing runtime sql for node "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"
+[0m10:16:10.233576 [debug] [Thread-3 (]: Using snowflake connection "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"
+[0m10:16:10.234149 [debug] [Thread-3 (]: On test.employee_analytics.unique_stg_employees_employee_id.db72478d64: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    employee_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employees
+where employee_id is not null
+group by employee_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:10.234658 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:16:10.253809 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.950 seconds
+[0m10:16:10.256556 [info ] [Thread-4 (]: 5 of 20 PASS unique_stg_employee_events_event_id ............................... [[32mPASS[0m in 1.04s]
+[0m10:16:10.257381 [debug] [Thread-4 (]: Finished running node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:16:10.258038 [debug] [Thread-4 (]: Began running node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:16:10.259031 [info ] [Thread-4 (]: 11 of 20 START test not_null_stg_departments_department_id ..................... [RUN]
+[0m10:16:10.259820 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c, now test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8)
+[0m10:16:10.260360 [debug] [Thread-4 (]: Began compiling node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:16:10.266502 [debug] [Thread-4 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"
+[0m10:16:10.268269 [debug] [Thread-4 (]: Began executing node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:16:10.272865 [debug] [Thread-4 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"
+[0m10:16:10.274857 [debug] [Thread-4 (]: Using snowflake connection "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"
+[0m10:16:10.275443 [debug] [Thread-4 (]: On test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select department_id
+from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_departments
+where department_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:10.276096 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:16:10.899346 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.708 seconds
+[0m10:16:10.901944 [info ] [Thread-5 (]: 8 of 20 PASS not_null_stg_employees_employee_id ................................ [[32mPASS[0m in 0.74s]
+[0m10:16:10.902822 [debug] [Thread-5 (]: Finished running node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:16:10.903461 [debug] [Thread-5 (]: Began running node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:16:10.904219 [info ] [Thread-5 (]: 12 of 20 START test unique_stg_departments_department_id ....................... [RUN]
+[0m10:16:10.904905 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b, now test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b)
+[0m10:16:10.905410 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:16:10.913213 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"
+[0m10:16:10.914112 [debug] [Thread-5 (]: Began executing node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:16:10.918007 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"
+[0m10:16:10.919331 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"
+[0m10:16:10.919993 [debug] [Thread-5 (]: On test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    department_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_departments
+where department_id is not null
+group by department_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:10.920527 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:16:10.995665 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.761 seconds
+[0m10:16:10.998186 [info ] [Thread-3 (]: 10 of 20 PASS unique_stg_employees_employee_id ................................. [[32mPASS[0m in 0.78s]
+[0m10:16:10.999018 [debug] [Thread-3 (]: Finished running node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:16:10.999733 [debug] [Thread-3 (]: Began running node model.employee_analytics.agg_employee_movement
+[0m10:16:11.000579 [info ] [Thread-3 (]: 13 of 20 START sql table model ANALYTICS.agg_employee_movement ................. [RUN]
+[0m10:16:11.001240 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.employee_analytics.unique_stg_employees_employee_id.db72478d64, now model.employee_analytics.agg_employee_movement)
+[0m10:16:11.001772 [debug] [Thread-3 (]: Began compiling node model.employee_analytics.agg_employee_movement
+[0m10:16:11.006592 [debug] [Thread-3 (]: Writing injected SQL for node "model.employee_analytics.agg_employee_movement"
+[0m10:16:11.007423 [debug] [Thread-3 (]: Began executing node model.employee_analytics.agg_employee_movement
+[0m10:16:11.034669 [debug] [Thread-3 (]: Writing runtime sql for node "model.employee_analytics.agg_employee_movement"
+[0m10:16:11.043471 [debug] [Thread-3 (]: Using snowflake connection "model.employee_analytics.agg_employee_movement"
+[0m10:16:11.044292 [debug] [Thread-3 (]: On model.employee_analytics.agg_employee_movement: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "model.employee_analytics.agg_employee_movement"} */
+create or replace transient table EMPLOYEE_ANALYTICS_DEV.ANALYTICS.agg_employee_movement
+         as
+        (select date_trunc('month',event_date)::date month,count_if(event_type='JOINED') joiners,count_if(event_type='EXITED') exits,count_if(event_type='TRANSFERRED') transfers,count_if(event_type='PROMOTED') promotions,count_if(event_type='SALARY_CHANGE') salary_changes from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employee_events group by 1
+        );
+[0m10:16:11.044860 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:16:11.057146 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.858 seconds
+[0m10:16:11.059738 [info ] [Thread-2 (]: 9 of 20 PASS relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_  [[32mPASS[0m in 0.88s]
+[0m10:16:11.060690 [debug] [Thread-2 (]: Finished running node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:16:11.085188 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.809 seconds
+[0m10:16:11.087672 [info ] [Thread-4 (]: 11 of 20 PASS not_null_stg_departments_department_id ........................... [[32mPASS[0m in 0.83s]
+[0m10:16:11.088520 [debug] [Thread-4 (]: Finished running node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:16:11.607805 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.687 seconds
+[0m10:16:11.610286 [info ] [Thread-5 (]: 12 of 20 PASS unique_stg_departments_department_id ............................. [[32mPASS[0m in 0.71s]
+[0m10:16:11.611143 [debug] [Thread-5 (]: Finished running node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:16:11.612190 [debug] [Thread-2 (]: Began running node model.employee_analytics.dim_employees
+[0m10:16:11.613012 [info ] [Thread-2 (]: 14 of 20 START sql table model ANALYTICS.dim_employees ......................... [RUN]
+[0m10:16:11.613732 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6, now model.employee_analytics.dim_employees)
+[0m10:16:11.614271 [debug] [Thread-2 (]: Began compiling node model.employee_analytics.dim_employees
+[0m10:16:11.621096 [debug] [Thread-2 (]: Writing injected SQL for node "model.employee_analytics.dim_employees"
+[0m10:16:11.621918 [debug] [Thread-2 (]: Began executing node model.employee_analytics.dim_employees
+[0m10:16:11.626147 [debug] [Thread-2 (]: Writing runtime sql for node "model.employee_analytics.dim_employees"
+[0m10:16:11.627722 [debug] [Thread-2 (]: Using snowflake connection "model.employee_analytics.dim_employees"
+[0m10:16:11.628341 [debug] [Thread-2 (]: On model.employee_analytics.dim_employees: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "model.employee_analytics.dim_employees"} */
+create or replace transient table EMPLOYEE_ANALYTICS_DEV.ANALYTICS.dim_employees
+         as
+        (select e.employee_id,e.employee_name,e.email,e.job_title,d.department_name,d.cost_center,e.join_date,e.exit_date,e.employment_status,e.salary,datediff(month,e.join_date,coalesce(e.exit_date,current_date())) tenure_months from EMPLOYEE_ANALYTICS_DEV.STAGING.stg_employees e left join EMPLOYEE_ANALYTICS_DEV.STAGING.stg_departments d on e.department_id=d.department_id
+        );
+[0m10:16:11.628873 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:16:12.873175 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.828 seconds
+[0m10:16:12.876631 [info ] [Thread-3 (]: 13 of 20 OK created sql table model ANALYTICS.agg_employee_movement ............ [[32mSUCCESS 1[0m in 1.88s]
+[0m10:16:12.877517 [debug] [Thread-3 (]: Finished running node model.employee_analytics.agg_employee_movement
+[0m10:16:13.382401 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.753 seconds
+[0m10:16:13.385220 [info ] [Thread-2 (]: 14 of 20 OK created sql table model ANALYTICS.dim_employees .................... [[32mSUCCESS 1[0m in 1.77s]
+[0m10:16:13.385958 [debug] [Thread-2 (]: Finished running node model.employee_analytics.dim_employees
+[0m10:16:13.387359 [debug] [Thread-5 (]: Began running node test.employee_analytics.assert_exit_date_valid
+[0m10:16:13.388015 [debug] [Thread-4 (]: Began running node test.employee_analytics.assert_salary_positive
+[0m10:16:13.388621 [debug] [Thread-3 (]: Began running node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:16:13.389262 [debug] [Thread-2 (]: Began running node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:16:13.389803 [info ] [Thread-5 (]: 15 of 20 START test assert_exit_date_valid ..................................... [RUN]
+[0m10:16:13.390397 [info ] [Thread-4 (]: 16 of 20 START test assert_salary_positive ..................................... [RUN]
+[0m10:16:13.391012 [info ] [Thread-3 (]: 17 of 20 START test not_null_dim_employees_employee_id ......................... [RUN]
+[0m10:16:13.391657 [info ] [Thread-2 (]: 18 of 20 START test not_null_dim_employees_salary .............................. [RUN]
+[0m10:16:13.392348 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b, now test.employee_analytics.assert_exit_date_valid)
+[0m10:16:13.392975 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8, now test.employee_analytics.assert_salary_positive)
+[0m10:16:13.393528 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.employee_analytics.agg_employee_movement, now test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291)
+[0m10:16:13.394098 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.employee_analytics.dim_employees, now test.employee_analytics.not_null_dim_employees_salary.1690cd4958)
+[0m10:16:13.394745 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.assert_exit_date_valid
+[0m10:16:13.395263 [debug] [Thread-4 (]: Began compiling node test.employee_analytics.assert_salary_positive
+[0m10:16:13.395849 [debug] [Thread-3 (]: Began compiling node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:16:13.396320 [debug] [Thread-2 (]: Began compiling node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:16:13.400914 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.assert_exit_date_valid"
+[0m10:16:13.405508 [debug] [Thread-4 (]: Writing injected SQL for node "test.employee_analytics.assert_salary_positive"
+[0m10:16:13.411687 [debug] [Thread-3 (]: Writing injected SQL for node "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"
+[0m10:16:13.419448 [debug] [Thread-2 (]: Writing injected SQL for node "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"
+[0m10:16:13.420794 [debug] [Thread-5 (]: Began executing node test.employee_analytics.assert_exit_date_valid
+[0m10:16:13.421608 [debug] [Thread-4 (]: Began executing node test.employee_analytics.assert_salary_positive
+[0m10:16:13.422461 [debug] [Thread-3 (]: Began executing node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:16:13.426384 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.assert_exit_date_valid"
+[0m10:16:13.426939 [debug] [Thread-2 (]: Began executing node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:16:13.430876 [debug] [Thread-4 (]: Writing runtime sql for node "test.employee_analytics.assert_salary_positive"
+[0m10:16:13.434737 [debug] [Thread-3 (]: Writing runtime sql for node "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"
+[0m10:16:13.440268 [debug] [Thread-2 (]: Writing runtime sql for node "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"
+[0m10:16:13.441247 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.assert_exit_date_valid"
+[0m10:16:13.442699 [debug] [Thread-4 (]: Using snowflake connection "test.employee_analytics.assert_salary_positive"
+[0m10:16:13.444026 [debug] [Thread-3 (]: Using snowflake connection "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"
+[0m10:16:13.444657 [debug] [Thread-5 (]: On test.employee_analytics.assert_exit_date_valid: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.assert_exit_date_valid"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      select * from EMPLOYEE_ANALYTICS_DEV.ANALYTICS.dim_employees where exit_date is not null and exit_date < join_date
+      
+    ) dbt_internal_test
+[0m10:16:13.445720 [debug] [Thread-2 (]: Using snowflake connection "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"
+[0m10:16:13.446291 [debug] [Thread-4 (]: On test.employee_analytics.assert_salary_positive: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.assert_salary_positive"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      select * from EMPLOYEE_ANALYTICS_DEV.ANALYTICS.dim_employees where salary <= 0
+      
+    ) dbt_internal_test
+[0m10:16:13.446881 [debug] [Thread-3 (]: On test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select employee_id
+from EMPLOYEE_ANALYTICS_DEV.ANALYTICS.dim_employees
+where employee_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:13.447406 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:16:13.448042 [debug] [Thread-2 (]: On test.employee_analytics.not_null_dim_employees_salary.1690cd4958: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select salary
+from EMPLOYEE_ANALYTICS_DEV.ANALYTICS.dim_employees
+where salary is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:13.448589 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:16:13.449093 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:16:13.449775 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:16:14.562037 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.113 seconds
+[0m10:16:14.562825 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.114 seconds
+[0m10:16:14.565212 [info ] [Thread-3 (]: 17 of 20 PASS not_null_dim_employees_employee_id ............................... [[32mPASS[0m in 1.17s]
+[0m10:16:14.567427 [info ] [Thread-4 (]: 16 of 20 PASS assert_salary_positive ........................................... [[32mPASS[0m in 1.17s]
+[0m10:16:14.568331 [debug] [Thread-3 (]: Finished running node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:16:14.568987 [debug] [Thread-4 (]: Finished running node test.employee_analytics.assert_salary_positive
+[0m10:16:14.569615 [debug] [Thread-3 (]: Began running node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:16:14.570375 [info ] [Thread-3 (]: 19 of 20 START test unique_dim_employees_employee_id ........................... [RUN]
+[0m10:16:14.571021 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291, now test.employee_analytics.unique_dim_employees_employee_id.79828c8f30)
+[0m10:16:14.571496 [debug] [Thread-3 (]: Began compiling node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:16:14.577378 [debug] [Thread-3 (]: Writing injected SQL for node "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"
+[0m10:16:14.578125 [debug] [Thread-3 (]: Began executing node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:16:14.582199 [debug] [Thread-3 (]: Writing runtime sql for node "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"
+[0m10:16:14.583569 [debug] [Thread-3 (]: Using snowflake connection "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"
+[0m10:16:14.584326 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.137 seconds
+[0m10:16:14.584916 [debug] [Thread-3 (]: On test.employee_analytics.unique_dim_employees_employee_id.79828c8f30: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    employee_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_DEV.ANALYTICS.dim_employees
+where employee_id is not null
+group by employee_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:16:14.587178 [info ] [Thread-5 (]: 15 of 20 PASS assert_exit_date_valid ........................................... [[32mPASS[0m in 1.19s]
+[0m10:16:14.587893 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:16:14.588552 [debug] [Thread-5 (]: Finished running node test.employee_analytics.assert_exit_date_valid
+[0m10:16:14.605045 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.155 seconds
+[0m10:16:14.607493 [info ] [Thread-2 (]: 18 of 20 PASS not_null_dim_employees_salary .................................... [[32mPASS[0m in 1.21s]
+[0m10:16:14.608368 [debug] [Thread-2 (]: Finished running node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:16:15.286217 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.698 seconds
+[0m10:16:15.288639 [info ] [Thread-3 (]: 19 of 20 PASS unique_dim_employees_employee_id ................................. [[32mPASS[0m in 0.72s]
+[0m10:16:15.289385 [debug] [Thread-3 (]: Finished running node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:16:15.290532 [debug] [Thread-4 (]: Began running node model.employee_analytics.agg_department_summary
+[0m10:16:15.291424 [info ] [Thread-4 (]: 20 of 20 START sql table model ANALYTICS.agg_department_summary ................ [RUN]
+[0m10:16:15.292161 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.employee_analytics.assert_salary_positive, now model.employee_analytics.agg_department_summary)
+[0m10:16:15.292667 [debug] [Thread-4 (]: Began compiling node model.employee_analytics.agg_department_summary
+[0m10:16:15.297330 [debug] [Thread-4 (]: Writing injected SQL for node "model.employee_analytics.agg_department_summary"
+[0m10:16:15.298080 [debug] [Thread-4 (]: Began executing node model.employee_analytics.agg_department_summary
+[0m10:16:15.302195 [debug] [Thread-4 (]: Writing runtime sql for node "model.employee_analytics.agg_department_summary"
+[0m10:16:15.303612 [debug] [Thread-4 (]: Using snowflake connection "model.employee_analytics.agg_department_summary"
+[0m10:16:15.304191 [debug] [Thread-4 (]: On model.employee_analytics.agg_department_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "dev", "node_id": "model.employee_analytics.agg_department_summary"} */
+create or replace transient table EMPLOYEE_ANALYTICS_DEV.ANALYTICS.agg_department_summary
+         as
+        (select department_name,count(*) total_employees,count_if(employment_status='ACTIVE') active_employees,count_if(employment_status='EXITED') exited_employees,round(avg(salary),2) avg_salary,round(avg(tenure_months),1) avg_tenure_months from EMPLOYEE_ANALYTICS_DEV.ANALYTICS.dim_employees group by department_name
+        );
+[0m10:16:15.304694 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:16:17.063080 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.758 seconds
+[0m10:16:17.065908 [info ] [Thread-4 (]: 20 of 20 OK created sql table model ANALYTICS.agg_department_summary ........... [[32mSUCCESS 1[0m in 1.77s]
+[0m10:16:17.066703 [debug] [Thread-4 (]: Finished running node model.employee_analytics.agg_department_summary
+[0m10:16:17.070103 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m10:16:17.070980 [debug] [Dummy-1   ]: Connection 'test.employee_analytics.unique_dim_employees_employee_id.79828c8f30' was properly closed.
+[0m10:16:17.071461 [debug] [Dummy-1   ]: Connection 'model.employee_analytics.agg_department_summary' was properly closed.
+[0m10:16:17.071963 [debug] [Dummy-1   ]: Connection 'test.employee_analytics.not_null_dim_employees_salary.1690cd4958' was properly closed.
+[0m10:16:17.072357 [debug] [Dummy-1   ]: Connection 'test.employee_analytics.assert_exit_date_valid' was properly closed.
+[0m10:16:17.072929 [info ] [Dummy-1   ]: 
+[0m10:16:17.073407 [info ] [Dummy-1   ]: Finished running 3 table models, 14 data tests, 3 view models in 0 hours 0 minutes and 11.32 seconds (11.32s).
+[0m10:16:17.076410 [debug] [Dummy-1   ]: Command end result
+[0m10:16:17.102078 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m10:16:17.104223 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m10:16:17.110938 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m10:16:17.111461 [info ] [Dummy-1   ]: 
+[0m10:16:17.112095 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m10:16:17.112551 [info ] [Dummy-1   ]: 
+[0m10:16:17.113027 [info ] [Dummy-1   ]: Done. PASS=20 WARN=0 ERROR=0 SKIP=0 TOTAL=20
+[0m10:16:17.114791 [debug] [Dummy-1   ]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 14.38338, "process_in_blocks": "0", "process_kernel_time": 1.04, "process_mem_max_rss": "520988", "process_out_blocks": "0", "process_user_time": 6.93}
+[0m10:16:17.115390 [debug] [Dummy-1   ]: Command `cli build` succeeded at 10:16:17.115152 after 14.38 seconds
+[0m10:16:17.115986 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 10:29:24.105769 | 7833817f-4753-4050-8fad-ef12065e5cb0 ==============================
+[0m10:29:24.105769 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m10:29:24.106746 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/tmp/dbt/', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/tmp/dbt/logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt ', 'target_path': '/tmp/dbt/target', 'introspect': 'True', 'send_anonymous_usage_stats': 'False'}
+[0m10:29:24.411280 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m10:29:24.971409 [debug] [Dummy-1   ]: checksum: ab753f9482add4a846bb27025959f965636943c672cd904bd74aeb8fdb8e7fb1, vars: {}, profile: , target: stage, version: 1.9.4
+[0m10:29:25.161052 [info ] [Dummy-1   ]: Unable to do partial parsing because config vars, config profile, or config target have changed
+[0m10:29:25.161850 [debug] [Dummy-1   ]: previous checksum: ab753f9482add4a846bb27025959f965636943c672cd904bd74aeb8fdb8e7fb1, current checksum: 53ed91fada2233efb98368d1716b44ab532c83a9c293cf1890b7905d5b45fb25
+[0m10:29:25.162357 [info ] [Dummy-1   ]: Unable to do partial parsing because profile has changed
+[0m10:29:27.100167 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m10:29:27.102730 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m10:29:27.174405 [info ] [Dummy-1   ]: Found 6 models, 14 data tests, 3 sources, 475 macros
+[0m10:29:27.178244 [info ] [Dummy-1   ]: 
+[0m10:29:27.178875 [info ] [Dummy-1   ]: Concurrency: 4 threads (target='stage')
+[0m10:29:27.179355 [info ] [Dummy-1   ]: 
+[0m10:29:27.180222 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m10:29:27.187183 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_EMPLOYEE_ANALYTICS_STAGE'
+[0m10:29:27.189232 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_EMPLOYEE_ANALYTICS_STAGE'
+[0m10:29:27.284512 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE"
+[0m10:29:27.285341 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE"
+[0m10:29:27.285964 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE"} */
+show terse schemas in database EMPLOYEE_ANALYTICS_STAGE
+    limit 10000
+[0m10:29:27.286534 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE"} */
+show terse schemas in database EMPLOYEE_ANALYTICS_STAGE
+    limit 10000
+[0m10:29:27.287078 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:29:27.287551 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:29:28.018435 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.731 seconds
+[0m10:29:28.070669 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.783 seconds
+[0m10:29:28.075602 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_STAGE, now list_EMPLOYEE_ANALYTICS_STAGE_STAGING)
+[0m10:29:28.077632 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_STAGE, now list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS)
+[0m10:29:28.092566 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE_STAGING"
+[0m10:29:28.096848 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS"
+[0m10:29:28.097543 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE_STAGING: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE_STAGING"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m10:29:28.098161 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m10:29:28.098748 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:29:28.099233 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m10:29:28.721369 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.622 seconds
+[0m10:29:28.726330 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE_STAGING"
+[0m10:29:28.727073 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE_STAGING: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE_STAGING"} */
+show objects in EMPLOYEE_ANALYTICS_STAGE.STAGING
+    limit 10000
+    
+;
+[0m10:29:28.781508 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.682 seconds
+[0m10:29:28.783675 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS"
+[0m10:29:28.784316 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS"} */
+show objects in EMPLOYEE_ANALYTICS_STAGE.ANALYTICS
+    limit 10000
+    
+;
+[0m10:29:28.863708 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.136 seconds
+[0m10:29:28.866056 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE_STAGING"
+[0m10:29:28.866669 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE_STAGING: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE_STAGING"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m10:29:28.952307 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.167 seconds
+[0m10:29:28.954497 [debug] [ThreadPool]: Using snowflake connection "list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS"
+[0m10:29:28.955091 [debug] [ThreadPool]: On list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "connection_name": "list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m10:29:28.968959 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.102 seconds
+[0m10:29:29.076809 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.121 seconds
+[0m10:29:29.090003 [debug] [Thread-2 (]: Began running node model.employee_analytics.stg_departments
+[0m10:29:29.090808 [debug] [Thread-3 (]: Began running node model.employee_analytics.stg_employee_events
+[0m10:29:29.091680 [debug] [Thread-4 (]: Began running node model.employee_analytics.stg_employees
+[0m10:29:29.092632 [info ] [Thread-2 (]: 1 of 20 START sql view model STAGING.stg_departments ........................... [RUN]
+[0m10:29:29.093538 [info ] [Thread-3 (]: 2 of 20 START sql view model STAGING.stg_employee_events ....................... [RUN]
+[0m10:29:29.094372 [info ] [Thread-4 (]: 3 of 20 START sql view model STAGING.stg_employees ............................. [RUN]
+[0m10:29:29.095153 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_STAGE_STAGING, now model.employee_analytics.stg_departments)
+[0m10:29:29.095782 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_EMPLOYEE_ANALYTICS_STAGE_ANALYTICS, now model.employee_analytics.stg_employee_events)
+[0m10:29:29.096633 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.employee_analytics.stg_employees'
+[0m10:29:29.097231 [debug] [Thread-2 (]: Began compiling node model.employee_analytics.stg_departments
+[0m10:29:29.097777 [debug] [Thread-3 (]: Began compiling node model.employee_analytics.stg_employee_events
+[0m10:29:29.098294 [debug] [Thread-4 (]: Began compiling node model.employee_analytics.stg_employees
+[0m10:29:29.108091 [debug] [Thread-2 (]: Writing injected SQL for node "model.employee_analytics.stg_departments"
+[0m10:29:29.115397 [debug] [Thread-3 (]: Writing injected SQL for node "model.employee_analytics.stg_employee_events"
+[0m10:29:29.120550 [debug] [Thread-4 (]: Writing injected SQL for node "model.employee_analytics.stg_employees"
+[0m10:29:29.121881 [debug] [Thread-2 (]: Began executing node model.employee_analytics.stg_departments
+[0m10:29:29.122766 [debug] [Thread-3 (]: Began executing node model.employee_analytics.stg_employee_events
+[0m10:29:29.146550 [debug] [Thread-4 (]: Began executing node model.employee_analytics.stg_employees
+[0m10:29:29.172523 [debug] [Thread-2 (]: Writing runtime sql for node "model.employee_analytics.stg_departments"
+[0m10:29:29.187712 [debug] [Thread-3 (]: Writing runtime sql for node "model.employee_analytics.stg_employee_events"
+[0m10:29:29.192516 [debug] [Thread-4 (]: Writing runtime sql for node "model.employee_analytics.stg_employees"
+[0m10:29:29.194313 [debug] [Thread-2 (]: Using snowflake connection "model.employee_analytics.stg_departments"
+[0m10:29:29.195719 [debug] [Thread-3 (]: Using snowflake connection "model.employee_analytics.stg_employee_events"
+[0m10:29:29.196582 [debug] [Thread-2 (]: On model.employee_analytics.stg_departments: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "model.employee_analytics.stg_departments"} */
+create or replace   view EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_departments
+  
+   as (
+    select department_id,trim(department_name) department_name,trim(department_head) department_head,trim(cost_center) cost_center from EMPLOYEE_ANALYTICS_STAGE.RAW.DEPARTMENTS
+  );
+[0m10:29:29.197737 [debug] [Thread-4 (]: Using snowflake connection "model.employee_analytics.stg_employees"
+[0m10:29:29.198388 [debug] [Thread-3 (]: On model.employee_analytics.stg_employee_events: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "model.employee_analytics.stg_employee_events"} */
+create or replace   view EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employee_events
+  
+   as (
+    select event_id,employee_id,upper(trim(event_type)) event_type,event_date,old_value,new_value from EMPLOYEE_ANALYTICS_STAGE.RAW.EMPLOYEE_EVENTS
+  );
+[0m10:29:29.199006 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:29:29.199618 [debug] [Thread-4 (]: On model.employee_analytics.stg_employees: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "model.employee_analytics.stg_employees"} */
+create or replace   view EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employees
+  
+   as (
+    select employee_id,trim(employee_name) employee_name,lower(trim(email)) email,department_id,trim(job_title) job_title,join_date,exit_date,upper(trim(employment_status)) employment_status,salary,updated_at from EMPLOYEE_ANALYTICS_STAGE.RAW.EMPLOYEES
+  );
+[0m10:29:29.200309 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:29:29.201014 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:29:30.230807 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.030 seconds
+[0m10:29:30.239582 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.040 seconds
+[0m10:29:30.261901 [info ] [Thread-3 (]: 2 of 20 OK created sql view model STAGING.stg_employee_events .................. [[32mSUCCESS 1[0m in 1.16s]
+[0m10:29:30.262820 [info ] [Thread-2 (]: 1 of 20 OK created sql view model STAGING.stg_departments ...................... [[32mSUCCESS 1[0m in 1.17s]
+[0m10:29:30.263766 [debug] [Thread-3 (]: Finished running node model.employee_analytics.stg_employee_events
+[0m10:29:30.264589 [debug] [Thread-2 (]: Finished running node model.employee_analytics.stg_departments
+[0m10:29:30.265987 [debug] [Thread-5 (]: Began running node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:29:30.266592 [debug] [Thread-3 (]: Began running node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:29:30.267581 [debug] [Thread-2 (]: Began running node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:29:30.268283 [info ] [Thread-5 (]: 4 of 20 START test not_null_stg_employee_events_event_id ....................... [RUN]
+[0m10:29:30.268919 [info ] [Thread-3 (]: 5 of 20 START test unique_stg_employee_events_event_id ......................... [RUN]
+[0m10:29:30.269500 [info ] [Thread-2 (]: 6 of 20 START test not_null_stg_departments_department_id ...................... [RUN]
+[0m10:29:30.270304 [debug] [Thread-5 (]: Acquiring new snowflake connection 'test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52'
+[0m10:29:30.270983 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.employee_analytics.stg_employee_events, now test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c)
+[0m10:29:30.271684 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.employee_analytics.stg_departments, now test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8)
+[0m10:29:30.272321 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:29:30.272868 [debug] [Thread-3 (]: Began compiling node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:29:30.273412 [debug] [Thread-2 (]: Began compiling node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:29:30.285887 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"
+[0m10:29:30.295207 [debug] [Thread-3 (]: Writing injected SQL for node "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"
+[0m10:29:30.301614 [debug] [Thread-2 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"
+[0m10:29:30.302522 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.101 seconds
+[0m10:29:30.303757 [debug] [Thread-5 (]: Began executing node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:29:30.304746 [debug] [Thread-3 (]: Began executing node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:29:30.307995 [info ] [Thread-4 (]: 3 of 20 OK created sql view model STAGING.stg_employees ........................ [[32mSUCCESS 1[0m in 1.21s]
+[0m10:29:30.308816 [debug] [Thread-2 (]: Began executing node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:29:30.330878 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"
+[0m10:29:30.335638 [debug] [Thread-3 (]: Writing runtime sql for node "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"
+[0m10:29:30.336588 [debug] [Thread-4 (]: Finished running node model.employee_analytics.stg_employees
+[0m10:29:30.340777 [debug] [Thread-2 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"
+[0m10:29:30.342508 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"
+[0m10:29:30.343360 [debug] [Thread-4 (]: Began running node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:29:30.345054 [debug] [Thread-3 (]: Using snowflake connection "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"
+[0m10:29:30.346064 [debug] [Thread-5 (]: On test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select event_id
+from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employee_events
+where event_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:30.347311 [debug] [Thread-2 (]: Using snowflake connection "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"
+[0m10:29:30.347959 [info ] [Thread-4 (]: 7 of 20 START test unique_stg_departments_department_id ........................ [RUN]
+[0m10:29:30.348761 [debug] [Thread-3 (]: On test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    event_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employee_events
+where event_id is not null
+group by event_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:30.349356 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:29:30.349904 [debug] [Thread-2 (]: On test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select department_id
+from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_departments
+where department_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:30.350635 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.employee_analytics.stg_employees, now test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b)
+[0m10:29:30.351234 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:29:30.352003 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:29:30.352693 [debug] [Thread-4 (]: Began compiling node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:29:30.359222 [debug] [Thread-4 (]: Writing injected SQL for node "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"
+[0m10:29:30.360147 [debug] [Thread-4 (]: Began executing node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:29:30.364409 [debug] [Thread-4 (]: Writing runtime sql for node "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"
+[0m10:29:30.365738 [debug] [Thread-4 (]: Using snowflake connection "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"
+[0m10:29:30.366335 [debug] [Thread-4 (]: On test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    department_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_departments
+where department_id is not null
+group by department_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:30.366850 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:29:31.170614 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.818 seconds
+[0m10:29:31.175424 [info ] [Thread-2 (]: 6 of 20 PASS not_null_stg_departments_department_id ............................ [[32mPASS[0m in 0.90s]
+[0m10:29:31.176534 [debug] [Thread-2 (]: Finished running node test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8
+[0m10:29:31.177364 [debug] [Thread-2 (]: Began running node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:29:31.178164 [info ] [Thread-2 (]: 8 of 20 START test accepted_values_stg_employees_employment_status__ACTIVE__EXITED  [RUN]
+[0m10:29:31.178913 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_departments_department_id.ce7f6f5cf8, now test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8)
+[0m10:29:31.179484 [debug] [Thread-2 (]: Began compiling node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:29:31.186405 [debug] [Thread-2 (]: Writing injected SQL for node "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"
+[0m10:29:31.187327 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.838 seconds
+[0m10:29:31.190373 [info ] [Thread-5 (]: 4 of 20 PASS not_null_stg_employee_events_event_id ............................. [[32mPASS[0m in 0.92s]
+[0m10:29:31.191197 [debug] [Thread-2 (]: Began executing node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:29:31.191989 [debug] [Thread-5 (]: Finished running node test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52
+[0m10:29:31.196721 [debug] [Thread-2 (]: Writing runtime sql for node "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"
+[0m10:29:31.197623 [debug] [Thread-5 (]: Began running node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:29:31.198797 [info ] [Thread-5 (]: 9 of 20 START test not_null_stg_employees_department_id ........................ [RUN]
+[0m10:29:31.200256 [debug] [Thread-2 (]: Using snowflake connection "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"
+[0m10:29:31.201089 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_employee_events_event_id.ec250bcb52, now test.employee_analytics.not_null_stg_employees_department_id.a7701eed35)
+[0m10:29:31.201793 [debug] [Thread-2 (]: On test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        employment_status as value_field,
+        count(*) as n_records
+
+    from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employees
+    group by employment_status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'ACTIVE','EXITED'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:31.202421 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:29:31.202978 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:29:31.209876 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"
+[0m10:29:31.211036 [debug] [Thread-5 (]: Began executing node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:29:31.215485 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"
+[0m10:29:31.216958 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"
+[0m10:29:31.217646 [debug] [Thread-5 (]: On test.employee_analytics.not_null_stg_employees_department_id.a7701eed35: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.not_null_stg_employees_department_id.a7701eed35"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select department_id
+from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employees
+where department_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:31.218246 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:29:31.221774 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.855 seconds
+[0m10:29:31.224403 [info ] [Thread-4 (]: 7 of 20 PASS unique_stg_departments_department_id .............................. [[32mPASS[0m in 0.87s]
+[0m10:29:31.225304 [debug] [Thread-4 (]: Finished running node test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b
+[0m10:29:31.226044 [debug] [Thread-4 (]: Began running node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:29:31.226759 [info ] [Thread-4 (]: 10 of 20 START test not_null_stg_employees_employee_id ......................... [RUN]
+[0m10:29:31.227466 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.employee_analytics.unique_stg_departments_department_id.8e1b8b707b, now test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b)
+[0m10:29:31.228006 [debug] [Thread-4 (]: Began compiling node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:29:31.236124 [debug] [Thread-4 (]: Writing injected SQL for node "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"
+[0m10:29:31.237137 [debug] [Thread-4 (]: Began executing node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:29:31.241535 [debug] [Thread-4 (]: Writing runtime sql for node "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"
+[0m10:29:31.242819 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.891 seconds
+[0m10:29:31.245809 [info ] [Thread-3 (]: 5 of 20 PASS unique_stg_employee_events_event_id ............................... [[32mPASS[0m in 0.97s]
+[0m10:29:31.246968 [debug] [Thread-4 (]: Using snowflake connection "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"
+[0m10:29:31.247820 [debug] [Thread-3 (]: Finished running node test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c
+[0m10:29:31.248867 [debug] [Thread-4 (]: On test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select employee_id
+from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employees
+where employee_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:31.249997 [debug] [Thread-3 (]: Began running node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:29:31.251561 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:29:31.253225 [info ] [Thread-3 (]: 11 of 20 START test relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_  [RUN]
+[0m10:29:31.254571 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.employee_analytics.unique_stg_employee_events_event_id.d61930ab8c, now test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6)
+[0m10:29:31.255390 [debug] [Thread-3 (]: Began compiling node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:29:31.263965 [debug] [Thread-3 (]: Writing injected SQL for node "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"
+[0m10:29:31.265049 [debug] [Thread-3 (]: Began executing node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:29:31.269373 [debug] [Thread-3 (]: Writing runtime sql for node "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"
+[0m10:29:31.271052 [debug] [Thread-3 (]: Using snowflake connection "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"
+[0m10:29:31.272106 [debug] [Thread-3 (]: On test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with child as (
+    select employee_id as from_field
+    from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employee_events
+    where employee_id is not null
+),
+
+parent as (
+    select employee_id as to_field
+    from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employees
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:31.273023 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:29:32.200295 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.982 seconds
+[0m10:29:32.203029 [info ] [Thread-5 (]: 9 of 20 PASS not_null_stg_employees_department_id .............................. [[32mPASS[0m in 1.00s]
+[0m10:29:32.203932 [debug] [Thread-5 (]: Finished running node test.employee_analytics.not_null_stg_employees_department_id.a7701eed35
+[0m10:29:32.204749 [debug] [Thread-5 (]: Began running node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:29:32.205477 [info ] [Thread-5 (]: 12 of 20 START test unique_stg_employees_employee_id ........................... [RUN]
+[0m10:29:32.206305 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_employees_department_id.a7701eed35, now test.employee_analytics.unique_stg_employees_employee_id.db72478d64)
+[0m10:29:32.207158 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.956 seconds
+[0m10:29:32.207742 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:29:32.210314 [info ] [Thread-4 (]: 10 of 20 PASS not_null_stg_employees_employee_id ............................... [[32mPASS[0m in 0.98s]
+[0m10:29:32.219048 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"
+[0m10:29:32.219943 [debug] [Thread-4 (]: Finished running node test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b
+[0m10:29:32.221125 [debug] [Thread-4 (]: Began running node model.employee_analytics.agg_employee_movement
+[0m10:29:32.221900 [debug] [Thread-5 (]: Began executing node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:29:32.222717 [info ] [Thread-4 (]: 13 of 20 START sql table model ANALYTICS.agg_employee_movement ................. [RUN]
+[0m10:29:32.227060 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"
+[0m10:29:32.227928 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_stg_employees_employee_id.7f6f73d15b, now model.employee_analytics.agg_employee_movement)
+[0m10:29:32.228946 [debug] [Thread-4 (]: Began compiling node model.employee_analytics.agg_employee_movement
+[0m10:29:32.234291 [debug] [Thread-4 (]: Writing injected SQL for node "model.employee_analytics.agg_employee_movement"
+[0m10:29:32.235508 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"
+[0m10:29:32.236526 [debug] [Thread-5 (]: On test.employee_analytics.unique_stg_employees_employee_id.db72478d64: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.unique_stg_employees_employee_id.db72478d64"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    employee_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employees
+where employee_id is not null
+group by employee_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:32.237357 [debug] [Thread-4 (]: Began executing node model.employee_analytics.agg_employee_movement
+[0m10:29:32.237939 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:29:32.266949 [debug] [Thread-4 (]: Writing runtime sql for node "model.employee_analytics.agg_employee_movement"
+[0m10:29:32.268819 [debug] [Thread-4 (]: Using snowflake connection "model.employee_analytics.agg_employee_movement"
+[0m10:29:32.269514 [debug] [Thread-4 (]: On model.employee_analytics.agg_employee_movement: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "model.employee_analytics.agg_employee_movement"} */
+create or replace transient table EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.agg_employee_movement
+         as
+        (select date_trunc('month',event_date)::date month,count_if(event_type='JOINED') joiners,count_if(event_type='EXITED') exits,count_if(event_type='TRANSFERRED') transfers,count_if(event_type='PROMOTED') promotions,count_if(event_type='SALARY_CHANGE') salary_changes from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employee_events group by 1
+        );
+[0m10:29:32.270109 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:29:32.292015 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.089 seconds
+[0m10:29:32.294814 [info ] [Thread-2 (]: 8 of 20 PASS accepted_values_stg_employees_employment_status__ACTIVE__EXITED ... [[32mPASS[0m in 1.12s]
+[0m10:29:32.295737 [debug] [Thread-2 (]: Finished running node test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8
+[0m10:29:32.327958 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.055 seconds
+[0m10:29:32.330769 [info ] [Thread-3 (]: 11 of 20 PASS relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_  [[32mPASS[0m in 1.08s]
+[0m10:29:32.331696 [debug] [Thread-3 (]: Finished running node test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6
+[0m10:29:33.459379 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.221 seconds
+[0m10:29:33.462218 [info ] [Thread-5 (]: 12 of 20 PASS unique_stg_employees_employee_id ................................. [[32mPASS[0m in 1.26s]
+[0m10:29:33.463125 [debug] [Thread-5 (]: Finished running node test.employee_analytics.unique_stg_employees_employee_id.db72478d64
+[0m10:29:33.464247 [debug] [Thread-2 (]: Began running node model.employee_analytics.dim_employees
+[0m10:29:33.465139 [info ] [Thread-2 (]: 14 of 20 START sql table model ANALYTICS.dim_employees ......................... [RUN]
+[0m10:29:33.466036 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.employee_analytics.accepted_values_stg_employees_employment_status__ACTIVE__EXITED.696b0099c8, now model.employee_analytics.dim_employees)
+[0m10:29:33.466632 [debug] [Thread-2 (]: Began compiling node model.employee_analytics.dim_employees
+[0m10:29:33.474266 [debug] [Thread-2 (]: Writing injected SQL for node "model.employee_analytics.dim_employees"
+[0m10:29:33.475189 [debug] [Thread-2 (]: Began executing node model.employee_analytics.dim_employees
+[0m10:29:33.479557 [debug] [Thread-2 (]: Writing runtime sql for node "model.employee_analytics.dim_employees"
+[0m10:29:33.481171 [debug] [Thread-2 (]: Using snowflake connection "model.employee_analytics.dim_employees"
+[0m10:29:33.481802 [debug] [Thread-2 (]: On model.employee_analytics.dim_employees: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "model.employee_analytics.dim_employees"} */
+create or replace transient table EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees
+         as
+        (select e.employee_id,e.employee_name,e.email,e.job_title,d.department_name,d.cost_center,e.join_date,e.exit_date,e.employment_status,e.salary,datediff(month,e.join_date,coalesce(e.exit_date,current_date())) tenure_months from EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_employees e left join EMPLOYEE_ANALYTICS_STAGE.STAGING.stg_departments d on e.department_id=d.department_id
+        );
+[0m10:29:33.482351 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:29:34.250834 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.981 seconds
+[0m10:29:34.254342 [info ] [Thread-4 (]: 13 of 20 OK created sql table model ANALYTICS.agg_employee_movement ............ [[32mSUCCESS 1[0m in 2.03s]
+[0m10:29:34.255263 [debug] [Thread-4 (]: Finished running node model.employee_analytics.agg_employee_movement
+[0m10:29:34.934464 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.452 seconds
+[0m10:29:34.937457 [info ] [Thread-2 (]: 14 of 20 OK created sql table model ANALYTICS.dim_employees .................... [[32mSUCCESS 1[0m in 1.47s]
+[0m10:29:34.938297 [debug] [Thread-2 (]: Finished running node model.employee_analytics.dim_employees
+[0m10:29:34.939678 [debug] [Thread-5 (]: Began running node test.employee_analytics.assert_exit_date_valid
+[0m10:29:34.940448 [debug] [Thread-3 (]: Began running node test.employee_analytics.assert_salary_positive
+[0m10:29:34.941057 [debug] [Thread-4 (]: Began running node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:29:34.941639 [debug] [Thread-2 (]: Began running node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:29:34.942463 [info ] [Thread-5 (]: 15 of 20 START test assert_exit_date_valid ..................................... [RUN]
+[0m10:29:34.943102 [info ] [Thread-3 (]: 16 of 20 START test assert_salary_positive ..................................... [RUN]
+[0m10:29:34.943689 [info ] [Thread-4 (]: 17 of 20 START test not_null_dim_employees_employee_id ......................... [RUN]
+[0m10:29:34.944309 [info ] [Thread-2 (]: 18 of 20 START test not_null_dim_employees_salary .............................. [RUN]
+[0m10:29:34.945006 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly test.employee_analytics.unique_stg_employees_employee_id.db72478d64, now test.employee_analytics.assert_exit_date_valid)
+[0m10:29:34.945669 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.employee_analytics.relationships_stg_employee_events_employee_id__employee_id__ref_stg_employees_.d0912f39d6, now test.employee_analytics.assert_salary_positive)
+[0m10:29:34.946318 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.employee_analytics.agg_employee_movement, now test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291)
+[0m10:29:34.946903 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.employee_analytics.dim_employees, now test.employee_analytics.not_null_dim_employees_salary.1690cd4958)
+[0m10:29:34.947448 [debug] [Thread-5 (]: Began compiling node test.employee_analytics.assert_exit_date_valid
+[0m10:29:34.947966 [debug] [Thread-3 (]: Began compiling node test.employee_analytics.assert_salary_positive
+[0m10:29:34.948505 [debug] [Thread-4 (]: Began compiling node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:29:34.949012 [debug] [Thread-2 (]: Began compiling node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:29:34.953871 [debug] [Thread-5 (]: Writing injected SQL for node "test.employee_analytics.assert_exit_date_valid"
+[0m10:29:34.958744 [debug] [Thread-3 (]: Writing injected SQL for node "test.employee_analytics.assert_salary_positive"
+[0m10:29:34.964849 [debug] [Thread-4 (]: Writing injected SQL for node "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"
+[0m10:29:34.973349 [debug] [Thread-2 (]: Writing injected SQL for node "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"
+[0m10:29:34.974544 [debug] [Thread-5 (]: Began executing node test.employee_analytics.assert_exit_date_valid
+[0m10:29:34.975499 [debug] [Thread-3 (]: Began executing node test.employee_analytics.assert_salary_positive
+[0m10:29:34.976330 [debug] [Thread-4 (]: Began executing node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:29:34.980518 [debug] [Thread-5 (]: Writing runtime sql for node "test.employee_analytics.assert_exit_date_valid"
+[0m10:29:34.981356 [debug] [Thread-2 (]: Began executing node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:29:34.985562 [debug] [Thread-3 (]: Writing runtime sql for node "test.employee_analytics.assert_salary_positive"
+[0m10:29:34.989523 [debug] [Thread-4 (]: Writing runtime sql for node "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"
+[0m10:29:34.994040 [debug] [Thread-2 (]: Writing runtime sql for node "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"
+[0m10:29:34.995194 [debug] [Thread-5 (]: Using snowflake connection "test.employee_analytics.assert_exit_date_valid"
+[0m10:29:34.996515 [debug] [Thread-3 (]: Using snowflake connection "test.employee_analytics.assert_salary_positive"
+[0m10:29:34.997819 [debug] [Thread-4 (]: Using snowflake connection "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"
+[0m10:29:34.998576 [debug] [Thread-5 (]: On test.employee_analytics.assert_exit_date_valid: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.assert_exit_date_valid"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      select * from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees where exit_date is not null and exit_date < join_date
+      
+    ) dbt_internal_test
+[0m10:29:34.999618 [debug] [Thread-2 (]: Using snowflake connection "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"
+[0m10:29:35.000232 [debug] [Thread-3 (]: On test.employee_analytics.assert_salary_positive: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.assert_salary_positive"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      select * from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees where salary <= 0
+      
+    ) dbt_internal_test
+[0m10:29:35.000843 [debug] [Thread-4 (]: On test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select employee_id
+from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees
+where employee_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:35.001439 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m10:29:35.002026 [debug] [Thread-2 (]: On test.employee_analytics.not_null_dim_employees_salary.1690cd4958: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.not_null_dim_employees_salary.1690cd4958"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select salary
+from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees
+where salary is null
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:35.002566 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m10:29:35.003071 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:29:35.003794 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:29:35.827645 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.824 seconds
+[0m10:29:35.828487 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.825 seconds
+[0m10:29:35.830968 [info ] [Thread-4 (]: 17 of 20 PASS not_null_dim_employees_employee_id ............................... [[32mPASS[0m in 0.88s]
+[0m10:29:35.833375 [info ] [Thread-2 (]: 18 of 20 PASS not_null_dim_employees_salary .................................... [[32mPASS[0m in 0.89s]
+[0m10:29:35.837013 [debug] [Thread-4 (]: Finished running node test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291
+[0m10:29:35.837893 [debug] [Thread-2 (]: Finished running node test.employee_analytics.not_null_dim_employees_salary.1690cd4958
+[0m10:29:35.838944 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.836 seconds
+[0m10:29:35.839680 [debug] [Thread-4 (]: Began running node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:29:35.842524 [info ] [Thread-3 (]: 16 of 20 PASS assert_salary_positive ........................................... [[32mPASS[0m in 0.90s]
+[0m10:29:35.843314 [info ] [Thread-4 (]: 19 of 20 START test unique_dim_employees_employee_id ........................... [RUN]
+[0m10:29:35.844144 [debug] [Thread-3 (]: Finished running node test.employee_analytics.assert_salary_positive
+[0m10:29:35.844895 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_dim_employees_employee_id.ef83a0c291, now test.employee_analytics.unique_dim_employees_employee_id.79828c8f30)
+[0m10:29:35.845778 [debug] [Thread-4 (]: Began compiling node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:29:35.851840 [debug] [Thread-4 (]: Writing injected SQL for node "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"
+[0m10:29:35.852702 [debug] [Thread-4 (]: Began executing node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:29:35.856809 [debug] [Thread-4 (]: Writing runtime sql for node "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"
+[0m10:29:35.858161 [debug] [Thread-4 (]: Using snowflake connection "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"
+[0m10:29:35.858768 [debug] [Thread-4 (]: On test.employee_analytics.unique_dim_employees_employee_id.79828c8f30: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "test.employee_analytics.unique_dim_employees_employee_id.79828c8f30"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    employee_id as unique_field,
+    count(*) as n_records
+
+from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees
+where employee_id is not null
+group by employee_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m10:29:35.859283 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m10:29:35.863319 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 0.862 seconds
+[0m10:29:35.865751 [info ] [Thread-5 (]: 15 of 20 PASS assert_exit_date_valid ........................................... [[32mPASS[0m in 0.92s]
+[0m10:29:35.866560 [debug] [Thread-5 (]: Finished running node test.employee_analytics.assert_exit_date_valid
+[0m10:29:36.508060 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.649 seconds
+[0m10:29:36.510561 [info ] [Thread-4 (]: 19 of 20 PASS unique_dim_employees_employee_id ................................. [[32mPASS[0m in 0.67s]
+[0m10:29:36.511454 [debug] [Thread-4 (]: Finished running node test.employee_analytics.unique_dim_employees_employee_id.79828c8f30
+[0m10:29:36.512655 [debug] [Thread-2 (]: Began running node model.employee_analytics.agg_department_summary
+[0m10:29:36.513675 [info ] [Thread-2 (]: 20 of 20 START sql table model ANALYTICS.agg_department_summary ................ [RUN]
+[0m10:29:36.514401 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.employee_analytics.not_null_dim_employees_salary.1690cd4958, now model.employee_analytics.agg_department_summary)
+[0m10:29:36.514992 [debug] [Thread-2 (]: Began compiling node model.employee_analytics.agg_department_summary
+[0m10:29:36.519985 [debug] [Thread-2 (]: Writing injected SQL for node "model.employee_analytics.agg_department_summary"
+[0m10:29:36.520860 [debug] [Thread-2 (]: Began executing node model.employee_analytics.agg_department_summary
+[0m10:29:36.525173 [debug] [Thread-2 (]: Writing runtime sql for node "model.employee_analytics.agg_department_summary"
+[0m10:29:36.526695 [debug] [Thread-2 (]: Using snowflake connection "model.employee_analytics.agg_department_summary"
+[0m10:29:36.527335 [debug] [Thread-2 (]: On model.employee_analytics.agg_department_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "employee_analytics", "target_name": "stage", "node_id": "model.employee_analytics.agg_department_summary"} */
+create or replace transient table EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.agg_department_summary
+         as
+        (select department_name,count(*) total_employees,count_if(employment_status='ACTIVE') active_employees,count_if(employment_status='EXITED') exited_employees,round(avg(salary),2) avg_salary,round(avg(tenure_months),1) avg_tenure_months from EMPLOYEE_ANALYTICS_STAGE.ANALYTICS.dim_employees group by department_name
+        );
+[0m10:29:36.527891 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m10:29:37.943333 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.415 seconds
+[0m10:29:37.946293 [info ] [Thread-2 (]: 20 of 20 OK created sql table model ANALYTICS.agg_department_summary ........... [[32mSUCCESS 1[0m in 1.43s]
+[0m10:29:37.947105 [debug] [Thread-2 (]: Finished running node model.employee_analytics.agg_department_summary
+[0m10:29:37.950616 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m10:29:37.951453 [debug] [Dummy-1   ]: Connection 'test.employee_analytics.assert_salary_positive' was properly closed.
+[0m10:29:37.952077 [debug] [Dummy-1   ]: Connection 'model.employee_analytics.agg_department_summary' was properly closed.
+[0m10:29:37.952548 [debug] [Dummy-1   ]: Connection 'test.employee_analytics.unique_dim_employees_employee_id.79828c8f30' was properly closed.
+[0m10:29:37.952973 [debug] [Dummy-1   ]: Connection 'test.employee_analytics.assert_exit_date_valid' was properly closed.
+[0m10:29:37.953595 [info ] [Dummy-1   ]: 
+[0m10:29:37.954108 [info ] [Dummy-1   ]: Finished running 3 table models, 14 data tests, 3 view models in 0 hours 0 minutes and 10.77 seconds (10.77s).
+[0m10:29:37.957054 [debug] [Dummy-1   ]: Command end result
+[0m10:29:37.985402 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m10:29:37.987741 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m10:29:37.994958 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m10:29:37.995527 [info ] [Dummy-1   ]: 
+[0m10:29:37.996181 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m10:29:37.996729 [info ] [Dummy-1   ]: 
+[0m10:29:37.997244 [info ] [Dummy-1   ]: Done. PASS=20 WARN=0 ERROR=0 SKIP=0 TOTAL=20
+[0m10:29:37.999195 [debug] [Dummy-1   ]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 13.972403, "process_in_blocks": "0", "process_kernel_time": 1.13, "process_mem_max_rss": "517720", "process_out_blocks": "0", "process_user_time": 6.96}
+[0m10:29:37.999896 [debug] [Dummy-1   ]: Command `cli build` succeeded at 10:29:37.999608 after 13.97 seconds
+[0m10:29:38.000526 [debug] [Dummy-1   ]: Flushing usage events

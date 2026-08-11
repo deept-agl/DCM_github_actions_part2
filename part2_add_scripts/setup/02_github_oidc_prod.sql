@@ -10,7 +10,13 @@ CREATE USER IF NOT EXISTS SVC_EMP_DCM_PROD
     SUBJECT = 'repo:deept-agl/DCM_github_actions_part2:environment:DCM_PROD' -- replace with your github_user_name/repo
   );
 
+-- DCM deployment
 GRANT ROLE EMP_DCM_PROD_DEPLOYER TO USER SVC_EMP_DCM_PROD;
-GRANT ROLE EMPLOYEE_DBT TO USER SVC_EMP_DCM_PROD;
 
-SHOW USERS LIKE 'SVC_EMP_DCM_PROD';
+
+-- RAW demo data loading
+GRANT ROLE EMPLOYEE_ENGINEER TO USER SVC_EMP_DCM_PROD;
+
+
+-- dbt deployment and execution
+GRANT ROLE EMPLOYEE_DBT TO USER SVC_EMP_DCM_PROD;
