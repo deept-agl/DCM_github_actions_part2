@@ -8,6 +8,7 @@ on:
       - "sources/**"
       - "scripts/03_load_prod_sample_data.sql"
       - "scripts/04_validate_prod.sql"
+      - ".github/workflows/**"      
 
 permissions:
   id-token: write
