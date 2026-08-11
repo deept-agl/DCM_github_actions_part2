@@ -17,3 +17,7 @@ DEFINE SCHEMA {{ employee_db() }}.ANALYTICS
 
 DEFINE SCHEMA {{ employee_db() }}.GOVERNANCE
   COMMENT = 'Governance objects for Employee Analytics';
+
+
+DEFINE SCHEMA {{ employee_db() }}.DBT_PROJECTS
+  COMMENT = 'Deployed dbt project objects';
