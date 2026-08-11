@@ -77,7 +77,7 @@ jobs:
 
       - name: Deploy dbt CI project to STAGE
         run: |
-          snow --debug dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
+          snow dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
             --source ./sources/dbt/employee_analytics \
             --default-target stage \
             --database EMPLOYEE_ANALYTICS_STAGE \
@@ -87,6 +87,7 @@ jobs:
             --account "$SNOWFLAKE_ACCOUNT" \
             --user "$SNOWFLAKE_USER" \
             -x
+            --debug 
 
       - name: Run dbt build against STAGE
         run: |
