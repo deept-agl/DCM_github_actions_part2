@@ -59,7 +59,7 @@ jobs:
         uses: snowflakedb/snowflake-actions@v3
         with:
           use-oidc: true
-          cli-version: "3.16"
+          cli-version: "3.23.0"
 
       - name: Test Snowflake connection
         run: |
@@ -79,7 +79,6 @@ jobs:
         run: |
           snow dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
             --source ./sources/dbt/employee_analytics \
-            --profiles-dir ./sources/dbt/employee_analytics \
             --default-target stage \
             --database EMPLOYEE_ANALYTICS_STAGE \
             --schema DBT_PROJECTS \
