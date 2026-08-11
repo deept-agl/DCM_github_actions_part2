@@ -111,7 +111,13 @@ jobs:
       - name: Run dbt build against STAGE
         run: |
           snow dbt execute \
-            -x \
-            EMPLOYEE_ANALYTICS_DBT_CI \
+            EMPLOYEE_ANALYTICS_STAGE.DBT_PROJECTS.EMPLOYEE_ANALYTICS_DBT_CI \
             build \
-            --target stage
+            --target stage \
+            --database EMPLOYEE_ANALYTICS_STAGE \
+            --schema DBT_PROJECTS \
+            --role EMPLOYEE_DBT \
+            --warehouse EMPLOYEE_TRANSFORM_WH_STAGE \
+            --account "$SNOWFLAKE_ACCOUNT" \
+            --user "$SNOWFLAKE_USER" \
+            -x
