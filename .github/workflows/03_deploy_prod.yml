@@ -16,14 +16,13 @@ permissions:
 env:
   SNOWFLAKE_USER: SVC_EMP_DCM_PROD
   SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+  SNOWFLAKE_CLI_FEATURES_ENABLE_DBT: true
 
 jobs:
-
   deploy-prod:
-
     runs-on: ubuntu-latest
     environment: DCM_PROD
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -50,7 +49,6 @@ jobs:
           project-path: .
           snowflake-user: ${{ env.SNOWFLAKE_USER }}
           allow-drops: "false"
-          post-scripts-path: post_deploy/cicd
 
       - name: Set up Snowflake CLI with OIDC
         uses: snowflakedb/snowflake-actions@v3
@@ -59,25 +57,65 @@ jobs:
 
       - name: Test Snowflake CLI connection
         run: |
-
           snow connection test -x
-          
-       - name: Load PROD sample data
+
+      - name: Load PROD sample data
         shell: bash
         run: |
-          snow sql             -f scripts/03_load_prod_sample_data.sql             --database EMPLOYEE_ANALYTICS_PROD             --schema ANALYTICS             --role EMPLOYEE_ENGINEER              --warehouse EMPLOYEE_LOAD_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+          snow sql \
+            -f scripts/03_load_prod_sample_data.sql \
+            --database EMPLOYEE_ANALYTICS_PROD \
+            --schema RAW \
+            --role EMPLOYEE_ENGINEER \
+            --warehouse EMPLOYEE_LOAD_WH_PROD \
+            --account "$SNOWFLAKE_ACCOUNT" \
+            --user "$SNOWFLAKE_USER" \
+            --authenticator WORKLOAD_IDENTITY \
+            --workload-identity-provider OIDC \
+            -x
 
       - name: Deploy dbt project object to PROD
         shell: bash
         run: |
-          snow dbt deploy EMPLOYEE_ANALYTICS_DBT             --source sources/dbt/employee_analytics             --default-target prod             --database EMPLOYEE_ANALYTICS_PROD             --schema DBT_PROJECTS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+          snow dbt deploy EMPLOYEE_ANALYTICS_DBT \
+            --source sources/dbt/employee_analytics \
+            --default-target prod \
+            --database EMPLOYEE_ANALYTICS_PROD \
+            --schema DBT_PROJECTS \
+            --role EMPLOYEE_DBT \
+            --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
+            --account "$SNOWFLAKE_ACCOUNT" \
+            --user "$SNOWFLAKE_USER" \
+            --authenticator WORKLOAD_IDENTITY \
+            --workload-identity-provider OIDC \
+            -x
 
       - name: Build dbt models in PROD
         shell: bash
         run: |
-          snow sql             -q "EXECUTE DBT PROJECT EMPLOYEE_ANALYTICS_PROD.DBT_PROJECTS.EMPLOYEE_ANALYTICS_DBT ARGS = 'build --target prod';"             --database EMPLOYEE_ANALYTICS_PROD             --schema DBT_PROJECTS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+          snow sql \
+            -q "EXECUTE DBT PROJECT EMPLOYEE_ANALYTICS_PROD.DBT_PROJECTS.EMPLOYEE_ANALYTICS_DBT ARGS = 'build --target prod';" \
+            --database EMPLOYEE_ANALYTICS_PROD \
+            --schema DBT_PROJECTS \
+            --role EMPLOYEE_DBT \
+            --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
+            --account "$SNOWFLAKE_ACCOUNT" \
+            --user "$SNOWFLAKE_USER" \
+            --authenticator WORKLOAD_IDENTITY \
+            --workload-identity-provider OIDC \
+            -x
 
       - name: Validate PROD
         shell: bash
         run: |
-          snow sql             -f scripts/04_validate_prod.sql             --database EMPLOYEE_ANALYTICS_PROD             --schema ANALYTICS             --role EMPLOYEE_DBT             --warehouse EMPLOYEE_TRANSFORM_WH_PROD             --account "$SNOWFLAKE_ACCOUNT"             --user "$SNOWFLAKE_USER"             --authenticator WORKLOAD_IDENTITY             --workload-identity-provider OIDC             -x
+          snow sql \
+            -f scripts/04_validate_prod.sql \
+            --database EMPLOYEE_ANALYTICS_PROD \
+            --schema ANALYTICS \
+            --role EMPLOYEE_DBT \
+            --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
+            --account "$SNOWFLAKE_ACCOUNT" \
+            --user "$SNOWFLAKE_USER" \
+            --authenticator WORKLOAD_IDENTITY \
+            --workload-identity-provider OIDC \
+            -x
