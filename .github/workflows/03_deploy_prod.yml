@@ -44,7 +44,6 @@ jobs:
         run: |
           snow dcm plan \
             --target DCM_PROD \
-            --warehouse EMPLOYEE_TRANSFORM_WH_PROD \
             -x
 
       - name: Deploy DCM to PROD
