@@ -75,11 +75,31 @@ jobs:
           test -f sources/dbt/employee_analytics/dbt_project.yml
           test -f sources/dbt/employee_analytics/profiles.yml
 
+      - name: Prepare clean dbt project
+        run: |
+          mkdir -p ci_dbt_project
+
+          cp sources/dbt/employee_analytics/dbt_project.yml ci_dbt_project/
+          cp sources/dbt/employee_analytics/profiles.yml ci_dbt_project/
+
+          cp -R sources/dbt/employee_analytics/models ci_dbt_project/
+
+          if [ -d "sources/dbt/employee_analytics/macros" ]; then
+            cp -R sources/dbt/employee_analytics/macros ci_dbt_project/
+          fi
+
+          if [ -d "sources/dbt/employee_analytics/tests" ]; then
+            cp -R sources/dbt/employee_analytics/tests ci_dbt_project/
+          fi
+
+          find ci_dbt_project -type f | sort
+
       - name: Deploy dbt CI project to STAGE
         run: |
           snow dbt deploy EMPLOYEE_ANALYTICS_DBT_CI \
-            --source ./sources/dbt/employee_analytics \
+            --source ./ci_dbt_project \
             --default-target stage \
+            --dbt-version 1.11.11 \
             --database EMPLOYEE_ANALYTICS_STAGE \
             --schema DBT_PROJECTS \
             --role EMPLOYEE_DBT \
@@ -87,16 +107,11 @@ jobs:
             --account "$SNOWFLAKE_ACCOUNT" \
             --user "$SNOWFLAKE_USER" \
             -x
-            --debug 
 
       - name: Run dbt build against STAGE
         run: |
-          snow sql \
-            -q "EXECUTE DBT PROJECT EMPLOYEE_ANALYTICS_STAGE.DBT_PROJECTS.EMPLOYEE_ANALYTICS_DBT_CI ARGS = 'build --target stage';" \
-            --database EMPLOYEE_ANALYTICS_STAGE \
-            --schema DBT_PROJECTS \
-            --role EMPLOYEE_DBT \
-            --warehouse EMPLOYEE_TRANSFORM_WH_STAGE \
-            --account "$SNOWFLAKE_ACCOUNT" \
-            --user "$SNOWFLAKE_USER" \
-            -x
+          snow dbt execute \
+            -x \
+            EMPLOYEE_ANALYTICS_DBT_CI \
+            build \
+            --target stage
